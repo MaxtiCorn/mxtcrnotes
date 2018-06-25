@@ -6,6 +6,7 @@ import android.arch.lifecycle.MutableLiveData
 import com.maxticorn.mxtcrnotes.NotesApplication
 import com.maxticorn.mxtcrnotes.domain.LoadNotesUseCase
 import com.maxticorn.mxtcrnotes.domain.Note
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class NotesListViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,5 +18,16 @@ class NotesListViewModel(application: Application) : AndroidViewModel(applicatio
     init {
         (application as NotesApplication).appComponent.inject(this)
         notesLiveData.postValue(null)
+        loadNotes()
+    }
+
+    private fun loadNotes() {
+        notesLiveData.postValue(null)
+        loadNotesUseCase.getAllNotes()
+                .observeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    notesLiveData.postValue(it)
+                }
     }
 }
