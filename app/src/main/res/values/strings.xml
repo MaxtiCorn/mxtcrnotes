@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MXTCRNOTES</string>
+    <string name="note_title">заголовок</string>
+    <string name="note_text">текст</string>
+    <string name="ok">ок</string>
+    <string name="delete">удалить</string>
 </resources>
