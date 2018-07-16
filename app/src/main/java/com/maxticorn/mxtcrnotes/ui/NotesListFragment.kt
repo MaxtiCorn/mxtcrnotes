@@ -18,6 +18,17 @@ class NotesListFragment : Fragment() {
     private lateinit var notesRecyclerView: RecyclerView
     private lateinit var notesRecyclerViewAdapter: NotesRecyclerViewAdapter
 
+    companion object {
+        const val TAG = "NOTES_LIST_FRAGMENT"
+
+        fun newInstance(): NotesListFragment {
+            val fragment = NotesListFragment()
+            val args = Bundle()
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     private fun subscribeUi() {
         notesListViewModel.notesLiveData.observe(this, Observer<List<Note>> {
             notesRecyclerViewAdapter.setNotes(it)
