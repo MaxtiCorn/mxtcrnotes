@@ -12,5 +12,5 @@ abstract class NotesDatabase : RoomDatabase() {
         const val DATABASE_VERSION = 1
     }
 
-    internal abstract fun notesDao(): NotesDao
+    abstract fun notesDao(): NotesDao
 }

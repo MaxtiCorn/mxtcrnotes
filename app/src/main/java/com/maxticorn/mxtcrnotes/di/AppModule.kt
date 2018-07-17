@@ -24,7 +24,7 @@ class AppModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideReposDao(notesDatabase: NotesDatabase): NotesDao {
+    fun provideNotesDao(notesDatabase: NotesDatabase): NotesDao {
         return notesDatabase.notesDao()
     }
 
