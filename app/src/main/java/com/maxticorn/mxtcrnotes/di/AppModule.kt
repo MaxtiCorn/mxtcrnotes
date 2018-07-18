@@ -5,6 +5,7 @@ import android.content.Context
 import com.maxticorn.mxtcrnotes.data.local.LocalRepositoryImpl
 import com.maxticorn.mxtcrnotes.data.local.NotesDao
 import com.maxticorn.mxtcrnotes.data.local.NotesDatabase
+import com.maxticorn.mxtcrnotes.domain.EditNotesUseCase
 import com.maxticorn.mxtcrnotes.domain.LoadNotesUseCase
 import com.maxticorn.mxtcrnotes.domain.LocalRepository
 import dagger.Module
@@ -38,5 +39,11 @@ class AppModule(private val context: Context) {
     @Singleton
     fun provideLoadNotesUseCase(localRepository: LocalRepository): LoadNotesUseCase {
         return LoadNotesUseCase(localRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEditNotesUseCase(localRepository: LocalRepository): EditNotesUseCase {
+        return EditNotesUseCase(localRepository)
     }
 }
