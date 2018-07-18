@@ -56,7 +56,7 @@ class NotesListFragment : Fragment() {
     private fun setUpRecycler() {
         notesRecyclerView = rootView.findViewById(R.id.notes_list)
         notesRecyclerView.layoutManager = LinearLayoutManager(context)
-        notesRecyclerViewAdapter = NotesRecyclerViewAdapter()
+        notesRecyclerViewAdapter = NotesRecyclerViewAdapter(uiContainer)
         notesRecyclerView.adapter = notesRecyclerViewAdapter
     }
 

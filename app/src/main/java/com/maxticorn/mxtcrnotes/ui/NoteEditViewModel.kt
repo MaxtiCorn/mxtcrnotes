@@ -20,7 +20,9 @@ class NoteEditViewModel(application: Application, note: Note?) : AndroidViewMode
     }
 
     fun saveNote(title: String, content: String) {
-        val note = Note(null, title, content)
+        val note = noteLiveData.value ?: Note()
+        note.title = title
+        note.content = content
         editNotesUseCase.addOrUpdateNote(note)
     }
 

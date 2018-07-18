@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.maxticorn.mxtcrnotes.R
 import com.maxticorn.mxtcrnotes.domain.Note
 
-class NotesRecyclerViewAdapter : RecyclerView.Adapter<NotesRecyclerViewAdapter.NoteViewHolder>() {
+class NotesRecyclerViewAdapter(val uiContainer: UiContainer) : RecyclerView.Adapter<NotesRecyclerViewAdapter.NoteViewHolder>() {
     private var notes: List<Note>? = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -23,6 +23,9 @@ class NotesRecyclerViewAdapter : RecyclerView.Adapter<NotesRecyclerViewAdapter.N
         if (note != null) {
             holder.title.text = note.title
             holder.content.text = note.content
+        }
+        holder.itemView.setOnClickListener {
+            uiContainer.openNoteEdit(note)
         }
     }
 
