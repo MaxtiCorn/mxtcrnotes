@@ -14,7 +14,7 @@ interface NotesAPI {
     fun getAllNotes(): Single<List<Note>>
 
     @GET("/notes/{uid}")
-    fun getNote(@Path("uid") uid: String): Single<Response<Note>>
+    fun getNote(@Path("uid") uid: String): Single<Note>
 
     @POST("/notes")
     fun createNote(@Body() note: Note): Single<Note>
